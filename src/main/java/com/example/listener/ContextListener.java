@@ -1,14 +1,16 @@
 package com.example.listener;
 
-import javax.servlet.ServletContextAttributeEvent;
-import javax.servlet.ServletContextAttributeListener;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.time.LocalDateTime;
 
 @WebListener
-public class ContextListener implements ServletContextAttributeListener {
-    public void attributeAdded(ServletContextAttributeEvent event) {
+public class ContextListener  implements ServletContextListener {
 
-        event.getServletContext().setAttribute("servletTimeInit", LocalDateTime.now());
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        
+        sce.getServletContext().setAttribute("servletTimeInit", LocalDateTime.now());
     }
 }
