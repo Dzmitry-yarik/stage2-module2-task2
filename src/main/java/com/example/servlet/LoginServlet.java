@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        boolean rightLogin = user.getUsers().contains(login);
+        boolean rightLogin = login != null && user.getUsers().contains(login);
         boolean rightPassword = password != null && !password.trim().isEmpty();
 
         if (rightLogin && rightPassword) {
